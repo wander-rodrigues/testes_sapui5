@@ -1,0 +1,7 @@
+<mvc:View controllerName="Amarmn.MyFirstApp.controller.App"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Button
+		text="Press the button"
+		press=".onPress"/>
+</mvc:View>
