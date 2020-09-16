@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    	<title>Aplicação sap web ide</title>
+	
+        <!-- Carregando o UI5 instalado localmente -->
+    	<script id="sap-ui-bootstrap"
+    			src='https://openui5.hana.ondemand.com/resources/sap-ui-core.js'
+                data-sap-ui-libs='sap.ui.commons'
+                data-sap-ui-theme="sap_bluecrystal"
+    			data-sap-ui-compatVersion="edge">
+    	</script>
+    	
+    	<script>
+    	    var lo_texto = new sap.ui.commons.TextView({
+    	        text: 'Texto de teste',
+    	    });
+    	    
+    	    lo_texto.placeAt('content');
+    	 </script>
+	</head>
+	
+    <body class='sapUiBody'>
+        <div id='content'></div>
+    </body>
+</html>
