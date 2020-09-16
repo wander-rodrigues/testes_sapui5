@@ -1,0 +1,11 @@
+<mvc:View controllerName="sap.ui.demo.wt.controller.ContPainel1" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	<Panel headerText="{modelo_i18n>TituloPainel}" class="sapUiResponsiveMargin" width="auto">
+		<content>
+			<Button icon="sap-icon://collision" text="{modelo_i18n>TextoBtnAbrirDialog}" press="onAbrirDialogo" class="sapUiSmallMarginEnd"/>
+			<Button text="{modelo_i18n>TextoBotao}" press="onBotaoPressionado" class="myCustomButton"/>
+			<!-- RECIPIENTE é um JSON que foi declarado no Component.js -->
+			<Input value="{/recipiente/nome}" valueLiveUpdate="true" width="60%"/>
+			<Text text="Olá {/recipiente/nome}" class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+		</content>
+	</Panel>
+</mvc:View>

@@ -1,0 +1,21 @@
+<mvc:View controllerName="sap.ui.demo.wt.controller.ListaFaturas" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	<List id="idListaFaturas" class="sapUiResponsiveMargin" width="auto"
+		items="{ path : 'modelo_invoice>/Invoices', sorter : { path : 'ShipperName', group : true } }">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{modelo_i18n>tituloListadeFatura}"/>
+				<ToolbarSpacer/>
+				<SearchField width="50%" search="onFiltrarFaturas"/>
+			</Toolbar>
+		</headerToolbar>
+		<items>
+			<ObjectListItem title="{modelo_invoice>Quantity} x {modelo_invoice>ProductName}"
+				number="{ parts: [{path: 'modelo_invoice>ExtendedPrice'}, {path: 'modelo_view>/currency'}], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
+				numberUnit="{modelo_view>/currency}" numberState="{= ${modelo_invoice>ExtendedPrice} > 50 ? 'Error' : 'Success' }">
+				<firstStatus>
+					<ObjectStatus text="{ path: 'modelo_invoice>Status', formatter: '.propriedadeFormatter.funcaoStatusText' }"/>
+				</firstStatus>
+			</ObjectListItem>
+		</items>
+	</List>
+</mvc:View>

@@ -1,0 +1,19 @@
+<!-- 
+controllerName eu defino quem é o controlador da view
+press eu defino qual o evento que será disparado (tratado no controller) 
+-->
+<mvc:View controllerName="sap.ui.demo.wt.controller.ContTela1" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+	<App class="myAppDemoWT">
+		<pages>
+			<Page title="{modelo_i18n>TituloPagina}">
+				<headerContent>
+					<Button icon="sap-icon://hello-world" tooltip="teste" press="onAbrirDialogo"/>
+				</headerContent>
+				<content>
+					<mvc:XMLView viewName="sap.ui.demo.wt.view.Painel1"/>
+					<mvc:XMLView viewName="sap.ui.demo.wt.view.ListaFaturas"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
