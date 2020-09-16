@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<title>Tutorial 01 - Hello World App</title>
+	<script src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		id="sap-ui-bootstrap"
+		data-sap-ui-theme="sap_belize"
+		data-sap-ui-libs="sap.m">
+	</script>
+	<script type="text/javascript">
+		sap.ui.getCore().attachInit(function () {
+			// Cria uma aplicação mobile e exibe a primeira página
+			var lo_aplicacao = new sap.m.App("MinhaAplicacao", {
+				initialPage: "lo_pagina1"
+			});
+			// Cria a primeira página
+			var lo_pagina1 = new sap.m.Page("lo_pagina1", {
+				title         : "Primeira página",     // Titulo
+				showNavButton : false,                 // Sem botões de navegação
+				content       : new sap.m.Button({  
+					text  : "Ir para a página 2",  
+					press : function () {
+						lo_aplicacao.to("lo_pagina2"); // Navega para a página 2
+					}
+				})
+			});
+			// Cria a segunda página com o botão de voltar
+			var lo_pagina2 = new sap.m.Page("lo_pagina2", {
+				title : "Segunda página",             // Titulo
+				showNavButton  : true,                // Botão de voltar
+				navButtonPress : function () {
+					lo_aplicacao.back();              // Volta para a página anterior
+				}
+			});
+			// Adiciona as 2 páginas na aplicação
+			lo_aplicacao.addPage(lo_pagina1).addPage(lo_pagina2);
+			// COloca a aplicação no documento HTML
+			lo_aplicacao.placeAt("conteudo");
+		});
+	</script>	
+</head>
+<body class="sapUiBody" id="conteudo">
+</body>
+</html>

@@ -1,0 +1,15 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="nome.com.teste.Testezinho.controller.View1" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<Button xmlns="sap.m" text="Button" id="button0" activeIcon="sap-icon://accept" press="onPressButton"/>
+						<ToggleButton xmlns="sap.m" text="Toggle Button" id="button1"/>
+						<Button xmlns="sap.m" text="Button" id="button0_1592601761858" press="pressionouobotao"/>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
