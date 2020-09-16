@@ -1,0 +1,60 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="br.com.infoprodutos2.Produtos2.controller.Produtos">
+	<App>
+		<pages>
+			<Page title="Lista de produtos">
+			<content>
+			    <Table noDataText="Drop column list items here and columns in the area above" id="table0" items="{path:'/Products',parameters:{expand:'Category'},sorter:[{path:'Category/CategoryName',descending:false},{path:'ProductName',descending:false}]}">
+			        <items>
+			            <ColumnListItem type="Active" id="item0" press="funcListItemPress">
+			            <cells>
+			                <ObjectStatus xmlns="sap.m" text="{Category/CategoryName}" state="Error" id="status0"/>
+			                <Text xmlns="sap.m" id="text7" text="{ProductID}"/>
+			                <Text xmlns="sap.m" text="{ProductName}" id="text8"/>
+			                <Text xmlns="sap.m" id="text9" text="{QuantityPerUnit}"/>
+			                <ObjectNumber xmlns="sap.m" unit="BRL" id="number0" number="{ &#10;  parts: [&#10;    {path: 'UnitPrice'}, &#10;    '' &#10;  ],&#10;  type: 'sap.ui.model.type.Currency',&#10;  formatOptions: {&#10;    showMeasure: false&#10;  }&#10;}"/>
+			                <ObjectStatus xmlns="sap.m" text="{UnitsInStock}" id="status1" state="{= ${UnitsInStock} &gt; 50 ? 'Warning' : 'None' }"/>
+			                <ObjectStatus xmlns="sap.m" text="{= ${Discontinued} ? 'Descontinuado' : 'Ativo' }" state="{= ${Discontinued} ? 'Error' : 'Success' }" id="status3"/>
+			            </cells>
+			            </ColumnListItem>
+			        </items>
+			        <columns>
+			            <Column id="column0" mergeDuplicates="true">
+			                <header>
+			                    <Label text="Categoria" id="label0"/>
+			                </header>
+			            </Column>
+			            <Column id="column1">
+			                <header>
+			                    <Label text="ID Produto" id="label1"/>
+			                </header>
+			            </Column>
+			            <Column id="column2">
+			                <header>
+			                    <Label text="Produto" id="label2"/>
+			                </header>
+			            </Column>
+			            <Column id="column3">
+			                <header>
+			                    <Text text="Qtde por Unidade" id="text3"/>
+			                </header>
+			            </Column>
+			            <Column id="column4">
+			                <header>
+			                    <Text text="Preço Unitário" id="text4"/>
+			                </header>
+			            </Column>
+			            <Column id="column5">
+			                <header>
+			                    <Text text="Estoque" id="text5"/>
+			                </header>
+			            </Column>
+			            <Column id="column6">
+			                <header>
+			                    <Text text="Descontinuado" id="text6"/>
+			                </header>
+			            </Column></columns></Table>
+			</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
