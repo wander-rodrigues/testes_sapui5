@@ -1,0 +1,66 @@
+<mvc:View controllerName="br.com.dashboard.SalesDashboard.controller.Dashboard" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:chart="sap.suite.ui.microchart">
+	<!--<Shell id="shell">-->
+	<!--	<App id="app">-->
+	<!--		<pages>-->
+	<!--			<Page id="page" title="{i18n>title}">-->
+	<!--				<content></content>-->
+	<!--			</Page>-->
+	<!--		</pages>-->
+	<!--	</App>-->
+	<!--</Shell>-->
+	<f:DynamicPage>
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Dashboard Vendas"></Title>
+				</f:heading>
+				<f:content>
+					<OverflowToolbar>
+						<GenericTag text="RV" status="Success" design="StatusIconHidden">
+							<!--<value></value> ???????-->
+							<ObjectNumber emphasized="true" state="Success" unit="M"></ObjectNumber>
+						</GenericTag>
+					</OverflowToolbar>
+				</f:content>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader>
+				<f:content>
+					<layout:HorizontalLayout>
+						<layout:VerticalLayout>
+							<Text text="Vendas por Região / Tipo de Negócio / Produto (Milhões R$)" class="sapUiSmallMargin"></Text>
+							<FlexBox width="30rem" height="10rem" alignItems="Start" justifyContent="SpaceBetween">
+								<items>
+									<chart:InteractiveLineChart points="{/VW_SalesRegion}" displayedPoints="8" precedingPoint="20">
+										<chart:points>
+											<chart:InteractiveLineChartPoint value="{path: 'Revenue', type: 'sap.ui.model.odata.type.Decimal', constraints:{ precision: 4, scale:2 } }"
+												label="{Region}" color="{= ${Revenue} > 8000 ? 'Good' : ${Revenue} > 7000 ? 'Critical' : 'Error' }"></chart:InteractiveLineChartPoint>
+										</chart:points>
+									</chart:InteractiveLineChart>
+									<chart:InteractiveDonutChart segments="{/VW_SalesCategory}">
+										<chart:segments>
+											<chart:InteractiveDonutChartSegment label="{Category}"
+												value="{path: 'PCT_TO_TOTAL', type: 'sap.ui.model.odata.type.Decimal', constraints:{ precision: 4, scale:2 } }"
+												color="{= ${PCT_TO_TOTAL} > 50 ? 'Good' : ${PCT_TO_TOTAL} > 30 ? 'Critical' : 'Error' }"
+												displayedValue="{path: 'PCT_TO_TOTAL', type: 'sap.ui.model.odata.type.Decimal', constraints:{ precision: 4, scale:2 } } %"></chart:InteractiveDonutChartSegment>
+										</chart:segments>
+									</chart:InteractiveDonutChart>
+									<chart:InteractiveBarChart bars="{/VW_TopRevenueProducts}" labelWidth="25%" displayedBars="3">
+										<chart:bars>
+											<chart:InteractiveBarChartBar label="{Product}"
+												value="{path: 'Revenue', type: 'sap.ui.model.odata.type.Decimal', constraints:{ precision: 4, scale:2 } }" color="Error"></chart:InteractiveBarChartBar>
+										</chart:bars>
+									</chart:InteractiveBarChart>
+								</items>
+							</FlexBox>
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content></f:content>
+		<f:footer></f:footer>
+	</f:DynamicPage>
+</mvc:View>

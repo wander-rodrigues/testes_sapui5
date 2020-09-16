@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+		<title>MVC App</title>
+		
+		<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-compatVersion="edge">
+		</script>
+		
+		<script>
+			jQuery.sap.registerModulePath('sapui5.demo.mvcapp', './webapp/');
+			
+			//////////////////////
+			// Dados da aplicação
+			//////////////////////
+			var oData = {
+				"CountSuppliers": "2",
+				"Suppliers": [{
+					"ID": 0,
+					"Name": "Exotic Liquids",
+					"Address": {
+						"Street": "NE 228th",
+						"City": "Sammamish",
+						"State": "WA",
+						"ZipCode": "98074",
+						"Country": "USA"
+					}
+				}, {
+					"ID": 1,
+					"Name": "Tokyo Traders",
+					"Address": {
+						"Street": "NE 40th",
+						"City": "Redmond",
+						"State": "WA",
+						"ZipCode": "98052",
+						"Country": "USA"
+					}
+				}]
+			};
+	
+			// Criar a model e setar os dados do OData na model
+			var oModel = sap.ui.model.json.JSONModel();
+			oModel.setData(oData);
+	
+			// Setar a model no core pra ficar visível globalmente
+			sap.ui.getCore().setModel(oModel);
+			
+			var oPageMasterView = sap.ui.view("masterPage", {
+				type: sap.ui.core.mvc.ViewType.JS,
+				viewName: "sapui5.demo.mvcapp.view.Master",
+			});
+			
+			///////////////////////////////////////
+			//Criar uma app para adicionar a página
+			///////////////////////////////////////
+			var oApp = new sap.m.App({
+				initialPage: "masterPage"	
+			});
+			
+			oApp.addPage(oPageMasterView);
+			
+			//Colocar a app na área de UI
+			oApp.placeAt("content");
+			
+			//PAREI na 95 item 4.3
+		</script>
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
